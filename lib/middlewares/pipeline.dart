@@ -29,25 +29,25 @@ class Pipeline {
 
 final deFaultPipeline = Pipeline(
   pre: [
-    // DeduplicationMiddleware(),
+    DeduplicationMiddleware(),
     // CacheMiddleware(),
   ], 
 
   control: [
-    // DebouncingMiddleware(),
-    // ThrottlingMiddleware(),
-    // CancellationMiddleware(),
-    // ConcurrencyQueueMiddleware(),
+    DebouncingMiddleware(),
+    ThrottlingMiddleware(),
+    CancellationMiddleware(),
+    ConcurrencyQueueMiddleware(),
   ], 
 
   execution: [
-    // RetryMiddleware(maxRetries: 3),
-    // TimeoutMiddleware(timeout: Duration(seconds: 10)),
+    RetryMiddleware(maxRetries: 3),
+    TimeoutMiddleware(timeout: Duration(seconds: 10)),
   ], 
 
   post: [
     PerformanceMiddleware(),
-    // LoggingMiddleware(),
+    LoggingMiddleware(),
     // CacheMiddleware(),
   ]
 );
